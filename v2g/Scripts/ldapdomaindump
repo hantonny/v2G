@@ -1,0 +1,3 @@
+#!C:\Users\hanto\OneDrive\Documentos\WWW\v2g\v2g\Scripts\python.exe
+import ldapdomaindump
+ldapdomaindump.main()

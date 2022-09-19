@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="../static/css/addposto.css">
+<div class="content">
+    <div class="box">
+        <form method="POST" action="/addposto">
+            <h5 class="text-center mt-3 mb-3">Novo Posto</h5>
+            <div class="row text-center justify-content-center">
+                <div class="mb-3 col-sm-6">
+                    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                    {% if errors %}
+                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                        <h5>{{ errors[0] }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+                    {% if messages %}
+                    <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                        <h5>{{ messages[0] }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" required
+                        placeholder="Digite do Posto">
+                    <label for="city" class="form-label">Cidade</label>
+                    <input type="text" class="form-control" id="city" name="city" required
+                        placeholder="Digite a Cidade do Posto">
+                    <label for="lat" class="form-label">Latitude</label>
+                    <input type="text" class="form-control" id="lat" name="lat" required
+                        placeholder="Digite a Latitude">
+                    <label for="log" class="form-label">Longitude</label>
+                    <input type="text" class="form-control" id="log" name="log" required
+                        placeholder="Digite a Longitude">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary buttonLogin mt-2">Cadastrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

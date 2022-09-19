@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="../static/css/adduser.css">
+<script src="../static/js/CpfMaskFunctionInInput.js"></script>
+<script src="../static/js/PhoneMaskFunction.js"></script>
+<div class="content">
+    <div class="box">
+        <form method="POST" action="/adduser">
+            <h5 class="text-center mt-3 mb-3">Novo Usuário</h5>
+            <div class="row text-center justify-content-center">
+                <div class="mb-3 col-sm-6">
+                    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                    {% if errors %}
+                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                        <h5>{{ errors[0] }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+                    {% if messages %}
+                    <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                        <h5>{{ messages[0] }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" required
+                        placeholder="Digite seu nome">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required
+                        placeholder="Digite seu email">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input type="text" oninput='mascara(this)' class="form-control" id="cpf" name="cpf" required
+                        placeholder="Digite seu CPF">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="password" name="password" required
+                        placeholder="Digite sua senha">
+                    <label for="phone" class="form-label">Telefone</label>
+                    <input type="text" onkeypress='mask(this, mphone);' onblur='mask(this, mphone);'
+                        class="form-control" id="phone" name="phone" required placeholder="Digite seu telefone">
+                    <label for="group" class="form-label">Grupo</label>
+                    <select class="form-select" name="group" id="group" aria-label="Default select example" required>
+                        <option value="1">Master</option>
+                        <option value="2">Operacional</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary buttonSignup mt-2">Cadastrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

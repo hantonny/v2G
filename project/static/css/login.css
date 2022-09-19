@@ -1,0 +1,40 @@
+.content {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    background: #3E3B47;
+    width: 30.75rem;
+    padding: 2.5rem;
+    border-radius: 1rem;
+}
+
+ul {
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+
+button {
+    font-size: 1rem;
+    color: #FFF;
+    border: 0;
+    padding: 0 2rem;
+    border-radius: 0.25rem;
+    height: 3rem;
+    transition: filter 0.2s;
+}
+
+.buttonLogin {
+    margin: auto;
+    display: block;
+    width: 8rem;
+}
+
+button:hover {
+    filter: brightness(0.9)
+}

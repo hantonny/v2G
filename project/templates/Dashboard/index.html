@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="../static/css/dashboard.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<div id="map"></div>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCebyhriWlTlDZu3BFqYI9ucUHvi_ICvgQ&callback=initMap&v=weekly"
+  defer
+></script>
+
+
+<script>
+
+lat = JSON.parse({{ lat | tojson }})
+lng = JSON.parse({{ lng | tojson }})
+// Inicialize e adicione o mapa
+function initMap() {
+  // A localização
+  const location = { lat: lat, lng: lng };
+  // O mapa centralizado na localização
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 16,
+    center: location,
+  });
+  // A marcação na posição da localização
+  const marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+}
+
+window.initMap = initMap;
+</script>
+{% endblock %}

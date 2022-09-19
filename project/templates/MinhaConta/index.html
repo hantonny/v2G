@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="../static/css/minhaconta.css">
+<script src="../static/js/CpfMaskFunctionInInput.js"></script>
+<script src="../static/js/PhoneMaskFunction.js"></script>
+<div class="content">
+    <div class="box">
+        <form method="POST" action="/minhaconta">
+            <h5 class="text-center mt-3 mb-3">Minha Conta</h5>
+
+            <div class="row text-center justify-content-center">
+
+                <div class="mb-3 col-sm-6">
+                    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                    {% if errors %}
+                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                        <h5>{{ errors[0] }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+                    {% if messages %}
+                    <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                        <h5>{{ messages[0] }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" required placeholder="Digite seu nome"
+                        value="{{ user_current.name }}">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required
+                        placeholder="Digite seu email" value="{{ user_current.email }}">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input type="text" oninput='mascara(this)' class="form-control" id="cpf" name="cpf" required
+                        placeholder="Digite seu CPF" value="{{ user_current.cpf }}">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="password" name="password" required
+                        placeholder="Digite sua senha">
+                    <label for="phone" class="form-label">Telefone</label>
+                    <input type="text" onkeypress='mask(this, mphone);' onblur='mask(this, mphone);'
+                        class="form-control" id="phone" name="phone" required placeholder="Digite seu telefone"
+                        value="{{ user_current.phone }}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary buttonLogin">Salvar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

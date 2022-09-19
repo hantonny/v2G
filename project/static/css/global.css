@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #312E38;
+    color: #F4EDE8;
+    --webkit-font-smoothing: antialiased;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 1080px) {
+
+    html,
+    body {
+        font-size: 93.75%;
+    }
+
+}
+
+@media only screen and (max-width: 720px) {
+
+    html,
+    body {
+        font-size: 87.5%;
+    }
+}
+
+body,
+input,
+textarea,
+button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+    font-weight: 600;
+}

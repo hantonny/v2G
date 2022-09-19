@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="../static/css/login.css">
+<script src="../static/js/CpfMaskFunctionInInput.js"></script>
+<div class="content">
+    <div class="box">
+        <form method="POST" action="/login">
+            <h1 class="text-center">V2G</h1>
+            <h5 class="text-center mt-3 mb-3">Login</h5>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                <h6>{{ messages[0] }}</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            {% endwith %}
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" oninput='mascara(this)' class="form-control" id="cpf" name="cpf" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary buttonLogin mt-2">Entrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+.content {
+    width: 100vw;
+    height: 86vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    background: #3E3B47;
+    width: 60.75rem;
+    padding: 2.5rem;
+    border-radius: 1rem;
+}
+
+.form-label + input {
+    margin-bottom: 1rem;
+}
+
+.buttonLogin {
+    margin: auto;
+    display: block;
+    width: 8rem;
+}
